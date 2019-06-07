@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/rest/")
 public class UserController {
@@ -22,6 +24,13 @@ public class UserController {
     public ResponseEntity<User> getUser(@PathVariable String userId){
         User user = userRepository.findById(userId);
         return new ResponseEntity<User>(user, HttpStatus.OK);
+    }
+
+    @GetMapping("user/all")
+    @ResponseBody
+    public ResponseEntity<Map<String, User>> getAllUsers(){
+        Map<String,User> user = userRepository.findAll();
+        return new ResponseEntity<Map<String,User>>(user, HttpStatus.OK);
     }
 
     @PostMapping(value = "/addUser",consumes = {"application/json"},produces = {"application/json"})

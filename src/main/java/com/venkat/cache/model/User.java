@@ -39,4 +39,13 @@ public class User implements Serializable {
     public void setSalary(Long salary) {
         this.salary = salary;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", salary=" + salary +
+                '}';
+    }
 }

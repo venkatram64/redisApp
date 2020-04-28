@@ -49,4 +49,16 @@ public class UserRepositoryImplTest {
         System.out.println("New Uer is " + newUser);
         assertEquals(user.getName(), newUser.getName());
     }
+
+    @Test
+    public void saveTest2(){
+        User user = new User();
+        user.setId("2");
+        user.setName("Chand");
+        user.setSalary(123L);
+        userRepository.save(user);
+        User newUser = userRepository.findById("2");
+        System.out.println("New Uer is " + newUser);
+        assertEquals(user.getName(), newUser.getName());
+    }
 }
